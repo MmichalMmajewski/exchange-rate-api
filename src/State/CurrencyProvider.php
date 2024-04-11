@@ -22,7 +22,7 @@ class CurrencyProvider implements ProviderInterface
     {
         $response = $this->externalApiConnectionService->getDecodeResponseByUriAndEndpoint(
             'https://api.nbp.pl/',
-            'api/exchangerates/tables/'
+            'api/exchangerates/tables/a'
         );
 
         //Return catch error with HTTP code response
