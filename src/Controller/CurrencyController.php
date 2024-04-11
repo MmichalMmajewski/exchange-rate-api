@@ -8,6 +8,7 @@ use App\Service\ExternalApiConnectionService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 class CurrencyController extends AbstractController
@@ -19,11 +20,13 @@ class CurrencyController extends AbstractController
     }
 
     #[Route('/fetch_currencies', name: 'app_fetch_currencies')]
-    public function fetch(EntityManagerInterface $entityManager): JsonResponse
+    public function fetch(EntityManagerInterface $entityManager, Request $request): JsonResponse
     {
+        $tableName = ($request->query->get('table_name')) ?: 'a';
+
         $response = $this->externalApiConnectionService->getDecodeResponseByUriAndEndpoint(
-            'https://api.nbp.pl/',
-            'api/exchangerates/tables/a'
+            $this->getParameter('app.nbp_api_url'),
+            $this->getParameter('app.nbp_exchange_rates_endpoint').$tableName
         );
 
         //Return catch error with HTTP code response

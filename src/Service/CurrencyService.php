@@ -35,6 +35,9 @@ readonly class CurrencyService
                     break;
                 case 'update':
                     $existsCurrency->setExchangeRate($responseItem->mid);
+                    break;
+                default:
+                    continue 2;
             }
         }
 
