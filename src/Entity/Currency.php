@@ -21,7 +21,7 @@ class Currency
     #[ORM\Column(length: 32)]
     private ?string $currencyCode = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'decimal', precision: 10, scale: 2)]
     private ?float $exchangeRate = null;
 
     public function getId(): ?int

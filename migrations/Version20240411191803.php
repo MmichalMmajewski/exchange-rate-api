@@ -21,7 +21,7 @@ final class Version20240411191803 extends AbstractMigration
                 id INT AUTO_INCREMENT NOT NULL, 
                 name VARCHAR(255) NOT NULL, 
                 currency_code VARCHAR(32) NOT NULL, 
-                exchange_rate DOUBLE PRECISION NOT NULL, 
+                exchange_rate NUMERIC(10, 2) NOT NULL, 
                 PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB'
         );
     }
