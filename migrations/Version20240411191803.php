@@ -18,7 +18,7 @@ final class Version20240411191803 extends AbstractMigration
     {
         $this->addSql(
             'CREATE TABLE currency (
-                id INT AUTO_INCREMENT NOT NULL, 
+                id BINARY(16) NOT NULL COMMENT \'(DC2Type:uuid)\', 
                 name VARCHAR(255) NOT NULL, 
                 currency_code VARCHAR(32) NOT NULL, 
                 exchange_rate NUMERIC(10, 2) NOT NULL, 
