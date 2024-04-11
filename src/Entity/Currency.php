@@ -2,15 +2,24 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 use App\Repository\CurrencyRepository;
+use App\State\CurrencyProvider;
 use App\Trait\EntityBaseTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: CurrencyRepository::class)]
-#[ApiResource]
+#[ApiResource(operations: [
+    new Get(),
+    new Post(),
+    new GetCollection(provider: CurrencyProvider::class)
+])]
 class Currency
 {
     use EntityBaseTrait;
