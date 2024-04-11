@@ -6,6 +6,7 @@
 parameters:
     app.nbp_api_url: '%env(NBP_API_BASE_URL)%'
     app.nbp_exchange_rates_endpoint: '%env(NBP_API_EXCHANGE_RATES_ENDPOINT)%'
+    app.nbp_exchange_rates_table_one: '%env(NBP_API_EXCHANGE_TABLE_ONE)%'
 services:
     # default configuration for services in *this* file
     _defaults:
